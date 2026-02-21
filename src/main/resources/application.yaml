@@ -1,7 +1,7 @@
 spring:
   application:
     name: kafka-listener
-  Kafka:
+  kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
     consumer:
       group-id: box-engine-consumer
@@ -18,9 +18,11 @@ spring:
         heartbeat.interval.ms: 5000
 
     listener:
-
       ack-mode: manual
       type: single
       missing-topics-fatal: false
-      concurrency: 3
+      concurrency: 10
+      observation-enabled: true
+    template:
+      observation-enabled: true
 
