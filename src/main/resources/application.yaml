@@ -10,9 +10,11 @@ spring:
       enable-auto-commit: false
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+#      value-deserializer: value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
 
-      # Ajuste de performance/estabilidade
       properties:
+#        schema.registry.url: ${SCHEMA_REGISTRY_URL}
+#        specific.avro.reader: true   # se você quer SpecificRecord (classes geradas)
         max.poll.records: 50
         max.poll.interval.ms: 300000
         session.timeout.ms: 15000
