@@ -3,8 +3,13 @@ spring:
     name: kafka-listener
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    client-id: ""
     consumer:
       group-id: box-engine-consumer
+      client-id: ""
+      bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+      max-poll-records: 50
+      max-poll-interval: 300000
       auto-offset-reset: earliest
 #      auto-offset-reset: latest
       enable-auto-commit: false
@@ -20,6 +25,9 @@ spring:
         session.timeout.ms: 15000
         heartbeat.interval.ms: 5000
 
+
+
+
     listener:
       ack-mode: manual
       type: single
@@ -28,4 +36,5 @@ spring:
       observation-enabled: true
     template:
       observation-enabled: true
+
 
